@@ -7,12 +7,13 @@ terraform {
   }
 }
 
+
 # 1. Connect to Local Keycloak
 provider "keycloak" {
   client_id     = "admin-cli"
-  username      = "admin"
-  password      = "admin"
-  url           = "http://localhost:8080"
+  username      = var.keycloak_user
+  password      = var.keycloak_password
+  url           = var.keycloak_url
 }
 
 # 2. Define the Realm
