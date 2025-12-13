@@ -1,0 +1,68 @@
+services:
+  # ---------------------------------------------------
+  # 1. DATABASE (Shared by Keycloak & eventually others)
+  # ---------------------------------------------------
+  postgres:
+    image: postgres:18.1
+    container_name: myriad_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - myriad_net
+
+  # ---------------------------------------------------
+  # 2. CACHE (Redis)
+  # ---------------------------------------------------
+  redis:
+    image: redis:8.2
+    container_name: myriad_redis
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - myriad_net
+
+  # ---------------------------------------------------
+  # 3. IDENTITY PROVIDER (Keycloak)
+  # ---------------------------------------------------
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0
+    container_name: myriad_auth
+    command: start-dev
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: ${KC_DB_URL}
+      KC_DB_USERNAME: ${POSTGRES_USER}
+      KC_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./apps/web/auth-theme/dist_keycloak:/opt/keycloak/providers
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - myriad_net
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  myriad_net:
+    driver: bridge

@@ -1,0 +1,8 @@
+# COPY THIS FILE TO 'terraform.tfvars' AND FILL IN THE VALUES
+
+# Keycloak Admin Credentials
+keycloak_user     = "admin"
+keycloak_password = "admin"
+
+# Keycloak URL (Default is local Docker)
+keycloak_url      = "http://localhost:8080"
