@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: body-api
+  datasource:
+    url: jdbc:postgresql://localhost:5432/myriad_essence
+    username: ${POSTGRES_USER:admin}
+    password: ${POSTGRES_PASSWORD:admin}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_URL:http://localhost:8080}/realms/myriad-essence
+
+server:
+  port: 8081
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    com.myriadessence.body: DEBUG
