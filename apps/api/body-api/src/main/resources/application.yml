@@ -2,7 +2,7 @@ spring:
   application:
     name: body-api
   datasource:
-    url: jdbc:postgresql://localhost:5432/myriad_essence
+    url: jdbc:postgresql://localhost:5432/myriad_body
     username: ${POSTGRES_USER:admin}
     password: ${POSTGRES_PASSWORD:admin}
     driver-class-name: org.postgresql.Driver
