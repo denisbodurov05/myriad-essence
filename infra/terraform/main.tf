@@ -29,6 +29,13 @@ resource "keycloak_realm" "myriad_essence" {
   remember_me            = true
   verify_email           = true
   ssl_required           = "external"
+
+// TODO Remove later
+  smtp_server {
+    host = "maildev"
+    port = "1025"
+    from = "no-reply@myriad-essence.com"
+  }
 }
 
 # 3. Define the Configuration Map (The "Source of Truth")
