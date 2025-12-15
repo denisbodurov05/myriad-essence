@@ -14,6 +14,8 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import com.myriadessence.body.exception.ResourceNotFoundException;
+
 @Service
 @RequiredArgsConstructor
 public class BloodWorkService {
@@ -32,7 +34,7 @@ public class BloodWorkService {
         return repository.findById(id)
                 .filter(bw -> bw.getUserId().equals(userId))
                 .map(this::mapToResponse)
-                .orElse(null); // Or throw exception
+                .orElseThrow(() -> new ResourceNotFoundException("BloodWork not found with id: " + id));
     }
 
     @Transactional

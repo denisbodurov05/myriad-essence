@@ -1,4 +1,4 @@
-package com.myriadessence.body.lab.enums;
+package com.myriadessence.body.vitality.enums;
 
 public enum BiometricType {
     HEART_RATE,

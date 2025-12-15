@@ -1,6 +1,6 @@
-package com.myriadessence.body.lab.repository;
+package com.myriadessence.body.vitality.repository;
 
-import com.myriadessence.body.lab.entity.BiometricReading;
+import com.myriadessence.body.vitality.entity.BiometricReading;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

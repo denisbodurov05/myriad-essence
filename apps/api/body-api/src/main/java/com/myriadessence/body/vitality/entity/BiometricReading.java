@@ -1,4 +1,4 @@
-package com.myriadessence.body.lab.entity;
+package com.myriadessence.body.vitality.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -15,7 +15,7 @@ import lombok.Setter;
 import java.time.Instant;
 import java.util.UUID;
 
-import com.myriadessence.body.lab.enums.BiometricType;
+import com.myriadessence.body.vitality.enums.BiometricType;
 
 @Entity
 @Table(name = "biometric_reading")

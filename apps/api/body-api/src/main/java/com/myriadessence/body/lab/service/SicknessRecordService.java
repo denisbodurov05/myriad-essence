@@ -3,6 +3,7 @@ package com.myriadessence.body.lab.service;
 import com.myriadessence.body.lab.dto.SicknessRecordRequest;
 import com.myriadessence.body.lab.dto.SicknessRecordResponse;
 import com.myriadessence.body.lab.entity.SicknessRecord;
+import com.myriadessence.body.exception.ResourceNotFoundException;
 import com.myriadessence.body.lab.repository.SicknessRecordRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,7 @@ public class SicknessRecordService {
         return mapToResponse(saved);
     }
 
+
     @Transactional
     public SicknessRecordResponse updateRecord(UUID userId, UUID id, SicknessRecordRequest request) {
         return repository.findById(id)
@@ -54,7 +56,7 @@ public class SicknessRecordService {
                     entity.setSeverity(request.severity());
                     return mapToResponse(repository.save(entity));
                 })
-                .orElse(null); // Or throw exception
+                .orElseThrow(() -> new ResourceNotFoundException("SicknessRecord not found with id: " + id));
     }
 
     @Transactional

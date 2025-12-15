@@ -1,9 +1,9 @@
-package com.myriadessence.body.lab.service;
+package com.myriadessence.body.vitality.service;
 
-import com.myriadessence.body.lab.dto.BiometricReadingRequest;
-import com.myriadessence.body.lab.dto.BiometricReadingResponse;
-import com.myriadessence.body.lab.entity.BiometricReading;
-import com.myriadessence.body.lab.repository.BiometricReadingRepository;
+import com.myriadessence.body.vitality.dto.BiometricReadingRequest;
+import com.myriadessence.body.vitality.dto.BiometricReadingResponse;
+import com.myriadessence.body.vitality.entity.BiometricReading;
+import com.myriadessence.body.vitality.repository.BiometricReadingRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

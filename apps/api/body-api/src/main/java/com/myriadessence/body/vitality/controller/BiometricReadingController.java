@@ -1,8 +1,8 @@
-package com.myriadessence.body.lab.controller;
+package com.myriadessence.body.vitality.controller;
 
-import com.myriadessence.body.lab.dto.BiometricReadingRequest;
-import com.myriadessence.body.lab.dto.BiometricReadingResponse;
-import com.myriadessence.body.lab.service.BiometricReadingService;
+import com.myriadessence.body.vitality.dto.BiometricReadingRequest;
+import com.myriadessence.body.vitality.dto.BiometricReadingResponse;
+import com.myriadessence.body.vitality.service.BiometricReadingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/lab/biometrics")
+@RequestMapping("/vitality/biometrics")
 @RequiredArgsConstructor
 public class BiometricReadingController {
 

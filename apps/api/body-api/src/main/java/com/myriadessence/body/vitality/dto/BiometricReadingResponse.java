@@ -1,6 +1,6 @@
-package com.myriadessence.body.lab.dto;
+package com.myriadessence.body.vitality.dto;
 
-import com.myriadessence.body.lab.enums.BiometricType;
+import com.myriadessence.body.vitality.enums.BiometricType;
 import java.time.Instant;
 import java.util.UUID;
 
