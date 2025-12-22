@@ -9,3 +9,9 @@ infra/terraform/.terraform.lock.hcl
 
 # --- Environment ---
 .env
+
+# --- VSCode ---
+.vscode/
+
+# --- Next.js ---
+node_modules/

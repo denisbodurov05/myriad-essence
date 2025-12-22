@@ -1,15 +1,10 @@
-{
-    "printWidth": 90,
-    "tabWidth": 4,
-    "useTabs": false,
-    "semi": true,
-    "singleQuote": false,
-    "trailingComma": "none",
-    "bracketSpacing": true,
-    "arrowParens": "avoid",
-    "overrides": [
+import sharedConfig from "@myriad-essence/prettier-config/index.json" with { type: "json" };
+
+export default {
+    ...sharedConfig,
+    overrides: [
         {
-            "files": [
+            files: [
                 "**/login/pages/*.tsx",
                 "**/account/pages/*.tsx",
                 "**/login/Template.tsx",
@@ -17,9 +12,9 @@
                 "**/login/UserProfileFormFields.tsx",
                 "KcApp.tsx"
             ],
-            "options": {
-                "printWidth": 150
+            options: {
+                printWidth: 150
             }
         }
     ]
-}
+};
